@@ -1,0 +1,21 @@
+{
+  "name": "Dark Theme",
+  "version": "0.1",
+  "manifest_version": 3,
+  "description": "Convert any webpage to dark theme and vice versa.",
+  "action": {
+    "default_title": "Dark Theme",
+    "default_popup": "index.html",
+    "default_icon": {
+      "16": "icons/favicon.png",
+      "32": "icons/favicon.png",
+      "64": "icons/favicon.png"
+    }
+  },
+  "content_scripts": [],
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "scripting"
+  ]
+}
