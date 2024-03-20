@@ -1,19 +1,19 @@
 const THEME_STATUS_KEY = "darkThemeState";
+const overlayId = "ovrly-398592834928817358";
 
 const overlay = document.createElement("div");
 const css = `
-position: fixed;
-pointer-events: none;
-top: 0;
-left: 0;
-width: 100vw;
-height: 100vh;
-background-color: white;
-mix-blend-mode: difference;
-z-index: 1;
+  position: fixed;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  mix-blend-mode: difference;
+  z-index: 1;
 `;
 overlay.setAttribute("style", css);
-var overlayId = "ovrly-398592834928817358";
 overlay.setAttribute("id", overlayId);
 
 // Toggle between dark and light theme
@@ -40,5 +40,17 @@ async function toggleTheme(shouldUpdate) {
     console.error(e);
     // Remove theme information on error
     localStorage.removeItem(THEME_STATUS_KEY);
+  }
+}
+
+// Sync the Popup UI with the localstorage
+async function syncTheme() {
+  const activeTheme = localStorage.getItem(THEME_STATUS_KEY);
+
+  if (activeTheme === "1") {
+    document.body.appendChild(overlay);
+  } else {
+    const overlay = document.getElementById(overlayId);
+    overlay.parentNode.removeChild(overlay);
   }
 }
