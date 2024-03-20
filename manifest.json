@@ -1,10 +1,10 @@
 {
-  "name": "Dark Theme",
+  "name": "Shadow Shift",
   "version": "0.1",
   "manifest_version": 3,
-  "description": "Convert any webpage to dark theme and vice versa.",
+  "description": "Convert any webpage including PDF files to dark theme and vice versa.",
   "action": {
-    "default_title": "Dark Theme",
+    "default_title": "Shadow Shift",
     "default_popup": "index.html",
     "default_icon": {
       "16": "icons/favicon.png",

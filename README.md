@@ -1,7 +1,7 @@
 # Shadow Shift Chrome Extension
-Welcome to the Dark Theme Chrome Extension repository! 
+Welcome to the Shadow Shift Chrome Extension repository! 
 
-This extension allows you to **<i>easily switch any webpage to a dark theme</i>** with just a click, providing a more comfortable browsing experience, especially in low-light environments.
+This extension allows you to **<i>easily switch any webpage/PDF documents to a dark theme</i>** with just a click, providing a more comfortable browsing experience, especially in low-light environments.
 
 ## Motivation
 Initially I found it difficult to read PDF books on my Chrome Browser at night. I thought about having the ability to toggle between light/dark mode for a PDF file in a chrome extension would be cool. Then I thought "**Why just PDF files - when we can do this for any webpages.**"
