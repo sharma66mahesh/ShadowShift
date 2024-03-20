@@ -1,5 +1,6 @@
 (function onPageReady() {
   syncTheme();
+  updateCheckbox();
 
   // Setup event listener on toggle click
   document.getElementById("switch").onclick = () => {
@@ -17,4 +18,10 @@ function sendToggleMessage() {
       toggle: true,
     });
   });
+}
+
+function updateCheckbox() {
+  const checkbox = document.getElementById(checkboxId);
+  const checkStatus = localStorage.getItem(THEME_STATUS_KEY);
+  checkbox.checked = checkStatus == "1" ? true : false;
 }

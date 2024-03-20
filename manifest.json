@@ -14,8 +14,8 @@
   },
   "content_scripts": [
     {
-      "matches": [ "*://*/*"],
-      "js": ["contentScript.js", "js/themeManager.js"],
+      "matches": ["*://*/*"],
+      "js": ["contentScript.js", "js/constants.js", "js/themeManager.js"],
       "all_frames": true
     }
   ],

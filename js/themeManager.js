@@ -1,6 +1,3 @@
-const THEME_STATUS_KEY = "darkThemeState";
-const overlayId = "ovrly-398592834928817358";
-
 const overlay = document.createElement("div");
 const css = `
   position: fixed;
