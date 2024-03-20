@@ -18,21 +18,27 @@ overlay.setAttribute("id", overlayId);
 
 // Toggle between dark and light theme
 async function toggleTheme(shouldUpdate) {
-  // 0 -> light, 1 -> dark
-  let activeTheme = localStorage.getItem(THEME_STATUS_KEY);
+  try {
+    // 0 -> light, 1 -> dark
+    let activeTheme = localStorage.getItem(THEME_STATUS_KEY);
 
-  if (activeTheme === "0" || !activeTheme) {
-    document.body.appendChild(overlay);
+    if (activeTheme === "0" || !activeTheme) {
+      document.body.appendChild(overlay);
 
-    activeTheme = "1";
-  } else {
-    const overlay = document.getElementById(overlayId);
-    overlay.parentNode.removeChild(overlay);
+      activeTheme = "1";
+    } else {
+      const overlay = document.getElementById(overlayId);
+      overlay.parentNode.removeChild(overlay);
 
-    activeTheme = "0";
-  }
+      activeTheme = "0";
+    }
 
-  if (shouldUpdate) {
-    localStorage.setItem(THEME_STATUS_KEY, activeTheme);
+    if (shouldUpdate) {
+      localStorage.setItem(THEME_STATUS_KEY, activeTheme);
+    }
+  } catch (e) {
+    console.error(e);
+    // Remove theme information on error
+    localStorage.removeItem(THEME_STATUS_KEY);
   }
 }
