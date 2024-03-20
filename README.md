@@ -1,14 +1,21 @@
-# Dark Theme Chrome Extension
-Welcome to the Dark Theme Chrome Extension repository! This extension allows you to easily switch any webpage to a dark theme with just a click, providing a more comfortable browsing experience, especially in low-light environments.
+# Shadow Shift Chrome Extension
+Welcome to the Dark Theme Chrome Extension repository! 
+
+This extension allows you to **<i>easily switch any webpage to a dark theme</i>** with just a click, providing a more comfortable browsing experience, especially in low-light environments.
+
+## Motivation
+Initially I found it difficult to read PDF books on my Chrome Browser at night. I thought about having the ability to toggle between light/dark mode for a PDF file in a chrome extension would be cool. Then I thought "**Why just PDF files - when we can do this for any webpages.**"
 
 ## Features
 - One-click Dark Theme: Enable dark mode on any webpage with a single click.
-- Customizable: Customize the darkness level and other aspects of the dark theme to suit your preferences.
-- Global Enable/Disable: Easily toggle the extension on or off as needed.
-- Intuitive Interface: Simple and user-friendly interface for seamless browsing.
+- (*Soon*) Customizable: Customize the darkness level and other aspects of the dark theme to suit your preferences.
+- (*Soon*) Global Enable/Disable: Easily toggle the extension on or off as needed.
+- (*Soon*) Intuitive Interface: Simple and user-friendly interface for seamless browsing.
 
 ## Installation
-To install the Dark Theme Chrome Extension, follow these steps:
+*We will soon publish this extension to Chrome Webstore.*
+
+As of now, you can follow these steps to get it up and running:
 - Clone this repository to your local machine or download the ZIP file.
 - Open Google Chrome and navigate to chrome://extensions.
 - Enable Developer Mode by toggling the switch in the top right corner.
@@ -21,7 +28,7 @@ Once the extension is installed, you can start using it immediately. Here's how:
 - Click on the extension icon in the Chrome toolbar.
 - Toggle the switch to enable or disable the dark theme.
 - Enjoy browsing in the dark mode!
-- You can also customize the dark theme by clicking on the settings icon within the extension popup.
+- (*Soon*) You can also customize the dark theme by clicking on the settings icon within the extension popup.
 
 ## Contributing
 Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
