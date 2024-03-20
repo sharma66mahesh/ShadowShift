@@ -12,10 +12,12 @@
       "64": "icons/favicon.png"
     }
   },
-  "content_scripts": [],
-  "permissions": [
-    "tabs",
-    "activeTab",
-    "scripting"
-  ]
+  "content_scripts": [
+    {
+      "matches": [ "*://*/*"],
+      "js": ["contentScript.js"],
+      "all_frames": true
+    }
+  ],
+  "permissions": ["tabs", "activeTab", "scripting"]
 }

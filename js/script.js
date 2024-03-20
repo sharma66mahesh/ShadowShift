@@ -1,13 +1,17 @@
+(function addEventListeners() {
+  console.log("LOADED>>>>>>>>>>>>>>>>>>>>>>>>>>");
+  document.getElementById("switch").onclick = toggleTheme;
+})();
+
 var currentTheme = 0; // 0 -> light, 1 -> dark
 var overlayId = "ovrly-398592834928817358";
 
-(function addEventListeners() {
-  document.getElementById('switch').onclick = toggleTheme;
-})();
-
 function toggleTheme() {
-  console.log('Toggling theme...');
-  if(currentTheme == 0) {
+  console.log("Toggling theme...");
+
+  sendToggleMessage(currentTheme);
+
+  if (currentTheme == 0) {
     const overlay = document.createElement("div");
 
     const css = `
@@ -35,3 +39,12 @@ function toggleTheme() {
   }
 }
 
+function sendToggleMessage(currentTheme) {
+  console.log("TOGGLING...");
+  chrome.tabs.query({ active: true, currentWindow: true }, async function (tabs) {
+    await chrome.tabs.sendMessage(tabs[0].id, {
+      prevTheme: currentTheme,
+      toggle: true,
+    });
+  });
+}
