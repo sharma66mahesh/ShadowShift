@@ -1,9 +1,3 @@
-const THEMES = {
-  light: "light",
-  dark: "dark",
-  system: "system",
-};
-
 function loadAndApplyPopupTheme() {
   chrome.storage.sync.get("theme", function (data) {
     if (data.theme) {

@@ -12,24 +12,38 @@ chrome.runtime.onMessage.addListener((request) => {
   }
 });
 
-// apply theme to the current tab/webpage
 function applyTheme(theme) {
-  if (theme === "light") {
-    document.body.style.backgroundColor = "white";
-    document.body.style.color = "black";
-  } else if (theme === "dark") {
-    document.body.style.backgroundColor = "black";
-    document.body.style.color = "white";
+  const existingOverlay = document.getElementById(OVERLAY_ID);
+
+  if (theme === THEMES.dark) {
+    // apply dark theme
+    if (!existingOverlay) {
+      document.body.appendChild(createOverlay());
+    }
   } else {
-    if (
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches
-    ) {
-      document.body.style.backgroundColor = "black";
-      document.body.style.color = "white";
-    } else {
-      document.body.style.backgroundColor = "white";
-      document.body.style.color = "black";
+    // for light or system theme, remove the overlay if it exists
+    if (existingOverlay) {
+      existingOverlay.parentNode.removeChild(existingOverlay);
     }
   }
+}
+
+function createOverlay() {
+  const overlay = document.createElement("div");
+  const css = `
+        position: fixed;
+        pointer-events: none;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: white;
+        mix-blend-mode: difference;
+        z-index: 9999;
+    `;
+
+  overlay.setAttribute("style", css);
+  overlay.setAttribute("id", OVERLAY_ID);
+
+  return overlay;
 }
