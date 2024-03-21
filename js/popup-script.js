@@ -1,27 +1,27 @@
-(function onPageReady() {
-  syncTheme();
-  updateCheckbox();
+function applyTheme(theme) {
+  // send message to the active tab's content script to apply the selected theme
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    chrome.tabs.sendMessage(tabs[0].id, { theme: theme });
+  });
 
-  // Setup event listener on toggle click
-  document.getElementById("switch").onclick = () => {
-    toggleTheme(true);
-    sendToggleMessage();
-  }
-})();
-
-function sendToggleMessage() {
-  console.log("TOGGLING...");
-
-  // Trigger tab UI to toggle it's UI too
-  chrome.tabs.query({ active: true, currentWindow: true }, async function (tabs) {
-    await chrome.tabs.sendMessage(tabs[0].id, {
-      toggle: true,
-    });
+  // save the theme preference in chrome.storage
+  chrome.storage.sync.set({ theme: theme }, function () {
+    console.log("Theme is set to " + theme);
   });
 }
 
-function updateCheckbox() {
-  const checkbox = document.getElementById(checkboxId);
-  const checkStatus = localStorage.getItem(THEME_STATUS_KEY);
-  checkbox.checked = checkStatus == "1" ? true : false;
-}
+document
+  .getElementById("light-theme-button")
+  .addEventListener("click", function () {
+    applyTheme("light");
+  });
+document
+  .getElementById("dark-theme-button")
+  .addEventListener("click", function () {
+    applyTheme("dark");
+  });
+document
+  .getElementById("system-theme-button")
+  .addEventListener("click", function () {
+    applyTheme("system");
+  });
