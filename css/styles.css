@@ -9,6 +9,28 @@
 body {
   font-family: Arial, sans-serif;
   transition: background-color 0.3s ease;
+  background-color: #e5e5f7;
+  opacity: 0.9;
+  background-image: repeating-radial-gradient(
+      circle at 0 0,
+      transparent 0,
+      #e5e5f7 4px
+    ),
+    repeating-linear-gradient(#444cf755, #5c64f9);
+}
+
+.header {
+  color: #2730f5;
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.header img {
+  height: 20px;
+  width: 20px;
 }
 
 .theme-buttons {
@@ -31,11 +53,11 @@ body {
 
 .theme-button:hover {
   color: white;
-  background-color: #5f56a6;
+  background-color: #444cf7;
 }
 
 .selected-button {
-  background-color: #5f56a6;
+  background-color: #444cf7;
   color: white;
-  border-color: #5f56a6;
+  border-color: #444cf7;
 }
