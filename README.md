@@ -51,4 +51,4 @@ If you encounter any issues or have any questions, feel free to open an issue or
 Special thanks to all contributors!
 
 ## About
-This project is maintained by sharma66maesh. You can find more of my projects on GitHub.
+This project is maintained by [sharma66mahesh](https://github.com/sharma66mahesh). You can find more of my projects on GitHub.
