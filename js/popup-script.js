@@ -4,7 +4,15 @@ const THEMES = {
   system: "system",
 };
 
-function applyTheme(theme) {
+function loadAndApplyPopupTheme() {
+  chrome.storage.sync.get("theme", function (data) {
+    if (data.theme) {
+      applyPopupTheme(data.theme);
+    }
+  });
+}
+
+function applyPopupTheme(theme) {
   // send message to the active tab's content script to apply the selected theme
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     chrome.tabs.sendMessage(tabs[0].id, { theme: theme });
@@ -35,24 +43,17 @@ function updateSelectedButtonStyle(selectedTheme) {
 document
   .getElementById("light-theme-button")
   .addEventListener("click", function () {
-    applyTheme(THEMES.light);
+    applyPopupTheme(THEMES.light);
   });
 document
   .getElementById("dark-theme-button")
   .addEventListener("click", function () {
-    applyTheme(THEMES.dark);
+    applyPopupTheme(THEMES.dark);
   });
 document
   .getElementById("system-theme-button")
   .addEventListener("click", function () {
-    applyTheme(THEMES.system);
+    applyPopupTheme(THEMES.system);
   });
 
-document.addEventListener("DOMContentLoaded", function () {
-  chrome.storage.sync.get("theme", function (data) {
-    // set selected button style on load
-    if (data.theme) {
-      updateSelectedButtonStyle(data.theme);
-    }
-  });
-});
+document.addEventListener("DOMContentLoaded", loadAndApplyPopupTheme);
