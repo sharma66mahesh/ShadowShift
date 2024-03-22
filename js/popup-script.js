@@ -1,11 +1,17 @@
 function loadAndApplyPopupTheme() {
-  chrome.storage.sync.get("theme", function (data) {
-    if (data.theme) {
-      applyPopupTheme(data.theme);
-    }
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    if (tabs.length === 0) return;
+
+    chrome.tabs.sendMessage(tabs[0].id, { action: "getTheme" }, (response) => {
+      if (response && response.theme) {
+        updateSelectedButtonStyle(response.theme);
+      }
+    });
   });
 }
 
+// send message to content script to apply theme to the webpage and,
+// update the theme/style of the selected popup button
 function applyPopupTheme(theme) {
   // send message to the active tab's content script to apply the selected theme
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {

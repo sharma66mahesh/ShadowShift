@@ -1,14 +1,27 @@
-// load and apply saved theme for the webpage
-chrome.storage.sync.get("theme", function (data) {
-  if (data.theme) {
-    applyTheme(data.theme);
+const SITE_KEY = getUniqueIdForCurrentSite();
+
+// load and apply saved theme for the current site
+chrome.storage.sync.get(SITE_KEY, function (data) {
+  const siteTheme = data[SITE_KEY];
+
+  if (siteTheme) {
+    applyTheme(siteTheme);
   }
 });
 
 // listen for events from the extension popup
-chrome.runtime.onMessage.addListener((request) => {
+chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.theme) {
     applyTheme(request.theme);
+  }
+
+  if (request.action === "getTheme") {
+    chrome.storage.sync.get(SITE_KEY, function (data) {
+      sendResponse({ theme: data[SITE_KEY] });
+    });
+
+    // indicates to chrome that the response will be asynchronous since chrome.storage.sync.get is async
+    return true;
   }
 });
 
@@ -26,6 +39,11 @@ function applyTheme(theme) {
       existingOverlay.parentNode.removeChild(existingOverlay);
     }
   }
+
+  // save the theme preference in chrome.storage
+  chrome.storage.sync.set({ [SITE_KEY]: theme }, function () {
+    console.log("Theme is set to " + theme);
+  });
 }
 
 function createOverlay() {
@@ -46,4 +64,10 @@ function createOverlay() {
   overlay.setAttribute("id", OVERLAY_ID);
 
   return overlay;
+}
+
+// note: please do not make this function non-deterministic (eg: using random numbers, timestamps etc)
+// this should return the same id each time for the current hostname
+function getUniqueIdForCurrentSite() {
+  return `shadow-shift-theme-${window.location.hostname}`;
 }
