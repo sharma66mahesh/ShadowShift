@@ -1,15 +1,28 @@
 function loadAndApplyPopupTheme() {
-  chrome.storage.sync.get("theme", function (data) {
-    if (data.theme) {
-      applyPopupTheme(data.theme);
-    }
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    if (tabs.length === 0) return;
+
+    chrome.tabs.sendMessage(
+      tabs[0].id,
+      { action: ACTIONS_POPUP.GET_THEME },
+      (response) => {
+        if (response && response.theme) {
+          updateSelectedButtonStyle(response.theme);
+        }
+      }
+    );
   });
 }
 
-function applyPopupTheme(theme) {
+// send message to content script to apply theme to the webpage and,
+// update the theme/style of the selected popup button
+function handleThemeSelectButtonClick(theme) {
   // send message to the active tab's content script to apply the selected theme
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-    chrome.tabs.sendMessage(tabs[0].id, { theme: theme });
+    chrome.tabs.sendMessage(tabs[0].id, {
+      action: ACTIONS_POPUP.APPLY_THEME,
+      theme: theme,
+    });
   });
 
   // save the theme preference in chrome.storage
@@ -37,17 +50,17 @@ function updateSelectedButtonStyle(selectedTheme) {
 document
   .getElementById("light-theme-button")
   .addEventListener("click", function () {
-    applyPopupTheme(THEMES.light);
+    handleThemeSelectButtonClick(THEMES.light);
   });
 document
   .getElementById("dark-theme-button")
   .addEventListener("click", function () {
-    applyPopupTheme(THEMES.dark);
+    handleThemeSelectButtonClick(THEMES.dark);
   });
 document
   .getElementById("system-theme-button")
   .addEventListener("click", function () {
-    applyPopupTheme(THEMES.system);
+    handleThemeSelectButtonClick(THEMES.system);
   });
 
 document.addEventListener("DOMContentLoaded", loadAndApplyPopupTheme);
