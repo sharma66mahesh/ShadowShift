@@ -11,11 +11,11 @@ chrome.storage.sync.get(SITE_KEY, function (data) {
 
 // listen for events from the extension popup
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.theme) {
+  if (request.action === ACTIONS_POPUP.APPLY_THEME) {
     applyTheme(request.theme);
   }
 
-  if (request.action === "getTheme") {
+  if (request.action === ACTIONS_POPUP.GET_THEME) {
     chrome.storage.sync.get(SITE_KEY, function (data) {
       sendResponse({ theme: data[SITE_KEY] });
     });
