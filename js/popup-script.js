@@ -16,7 +16,7 @@ function loadAndApplyPopupTheme() {
 
 // send message to content script to apply theme to the webpage and,
 // update the theme/style of the selected popup button
-function applyPopupTheme(theme) {
+function handleThemeSelectButtonClick(theme) {
   // send message to the active tab's content script to apply the selected theme
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     chrome.tabs.sendMessage(tabs[0].id, {
@@ -50,17 +50,17 @@ function updateSelectedButtonStyle(selectedTheme) {
 document
   .getElementById("light-theme-button")
   .addEventListener("click", function () {
-    applyPopupTheme(THEMES.light);
+    handleThemeSelectButtonClick(THEMES.light);
   });
 document
   .getElementById("dark-theme-button")
   .addEventListener("click", function () {
-    applyPopupTheme(THEMES.dark);
+    handleThemeSelectButtonClick(THEMES.dark);
   });
 document
   .getElementById("system-theme-button")
   .addEventListener("click", function () {
-    applyPopupTheme(THEMES.system);
+    handleThemeSelectButtonClick(THEMES.system);
   });
 
 document.addEventListener("DOMContentLoaded", loadAndApplyPopupTheme);
