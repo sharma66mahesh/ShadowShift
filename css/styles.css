@@ -1,47 +1,63 @@
-/* CSS for the input switch UI */
-.switch-container {
-  position: relative;
-  display: inline-block;
-  width: 50px; /* Adjust width as needed */
-  height: 25px; /* Adjust height as needed */
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Hide the default checkbox */
-.switch-input {
-  display: none;
+body {
+  font-family: Arial, sans-serif;
+  transition: background-color 0.3s ease;
+  background-color: #e5e5f7;
+  opacity: 0.9;
+  background-image: repeating-radial-gradient(
+      circle at 0 0,
+      transparent 0,
+      #e5e5f7 4px
+    ),
+    repeating-linear-gradient(#444cf755, #5c64f9);
 }
 
-/* Style the switch background */
-.switch-label {
-  display: block;
-  width: 100%;
-  height: 100%;
-  background-color: #ccc; /* Default background color */
-  border-radius: 25px; /* Adjust border radius to make it round */
+.header {
+  color: #2730f5;
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.header img {
+  height: 20px;
+  width: 20px;
+}
+
+.theme-buttons {
+  margin: 16px;
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+.theme-button {
+  padding: 10px 20px;
+  width: 90px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
   cursor: pointer;
-  position: relative;
+  background-color: #f9f9f9;
   transition: background-color 0.3s ease;
 }
 
-/* Style the switch handle */
-.switch-label::after {
-  content: "";
-  position: absolute;
-  top: 1px; /* Adjust top position to center the handle vertically */
-  left: 2px; /* Adjust left position to push the handle to the left */
-  width: 22px; /* Adjust width of the handle */
-  height: 22px; /* Adjust height of the handle */
-  background-color: white; /* Color of the handle */
-  border-radius: 50%; /* Make the handle round */
-  transition: left 0.3s ease;
+.theme-button:hover {
+  color: white;
+  background-color: #444cf7;
 }
 
-/* Move the handle to the right when the switch is checked */
-.switch-input:checked + .switch-label::after {
-  left: calc(100% - 25px); /* Adjust to match the width of the handle */
-}
-
-/* Change the background color of the switch when it's checked */
-.switch-input:checked + .switch-label {
-  background-color: #2196F3; /* Adjust to desired checked state color */
+.selected-button {
+  background-color: #444cf7;
+  color: white;
+  border-color: #444cf7;
 }

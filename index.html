@@ -10,54 +10,21 @@
     />
     <title>Shadow Shift</title>
   </head>
-  <body style="margin: 0; padding: 0">
-    <div style="height: 150px; width: 300px; background-color: black">
-      <div
-        style="
-          display: flex;
-          align-items: center;
-          flex-direction: column;
-          padding: 20px;
-        "
-      >
-        <div class="switch-container">
-          <input type="checkbox" id="switch" class="switch-input" />
-          <label for="switch" class="switch-label"></label>
-        </div>
+
+  <body>
+    <div>
+      <div class="header">
+        <img src="icons/favicon.png" alt="logo" />
+        <h1>Shadow Shift</h1>
       </div>
-
-      <div
-        style="
-          background: #5b5b5b;
-          height: 1px;
-          width: 90vw;
-          margin-bottom: 10px;
-          margin: auto;
-        "
-      ></div>
-
-      <div
-        style="
-          display: flex;
-          align-items: center;
-          color: white;
-          justify-content: space-around;
-          margin-top: 12px;
-        "
-      >
-        <span style="font-size: 20px; font-weight: 600">Current Theme:</span>
-        <div
-          style="
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background-color: white;
-          "
-        ></div>
+      <div class="theme-buttons">
+        <button id="light-theme-button" class="theme-button">☀️ Light</button>
+        <button id="dark-theme-button" class="theme-button">🌙 Dark</button>
+        <button id="system-theme-button" class="theme-button">💻 System</button>
       </div>
     </div>
   </body>
+
   <script src="js/constants.js"></script>
-  <script src="js/themeManager.js"></script>
   <script src="js/popup-script.js"></script>
 </html>

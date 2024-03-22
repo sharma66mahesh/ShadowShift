@@ -1,5 +1,7 @@
-const THEME_STATUS_KEY = "darkThemeState";
+const THEMES = {
+  light: "light",
+  dark: "dark",
+  system: "system",
+};
 
-// DOM Elements
-const overlayId = "ovrly-398592834928817358";
-const checkboxId = "switch";
+const OVERLAY_ID = "this-is-an-overlay-id";
