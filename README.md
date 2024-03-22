@@ -34,11 +34,11 @@ Once the extension is installed, you can start using it immediately. Here's how:
 Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
 
 - Fork the repository.
-- Create a new branch (git checkout -b feature/your-feature-name).
+- Create a new branch (`git checkout -b feature/your-feature-name`).
 - Make your changes.
 - Commit your changes (git commit -am 'Add new feature').
 - Push to the branch (git push origin feature/your-feature-name).
-- Create a new Pull Request.
+- Create a new Pull Request to `develop` branch.
 - Please make sure to follow the code of conduct and contribution guidelines.
 
 ## License
