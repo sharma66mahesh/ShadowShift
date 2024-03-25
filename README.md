@@ -1,4 +1,12 @@
 # Shadow Shift Chrome Extension
+### We're now available on the Chrome Web Store!
+<p align ="center"><a rel="noreferrer noopener" href="https://chromewebstore.google.com/detail/shadow-shift/eigmngocbafaednlhiejofjadcndnhdd"><img alt="Chrome Web Store" src="https://img.shields.io/badge/Chrome-black?style=for-the-badge&logo=googlechrome&color=blue&logoColor=yellow"></a>
+<a rel="noreferrer noopener" href="https://chromewebstore.google.com/detail/shadow-shift/eigmngocbafaednlhiejofjadcndnhdd"><img alt="Chrome Web Store" src="https://img.shields.io/badge/Opera-black?style=for-the-badge&logo=opera&logoColor=red&color=blue"></a>
+<a rel="noreferrer noopener" href="https://chromewebstore.google.com/detail/shadow-shift/eigmngocbafaednlhiejofjadcndnhdd"><img alt="Chrome Web Store" src="https://img.shields.io/badge/Brave-black?style=for-the-badge&logo=brave&color=blue"></a>
+<a rel="noreferrer noopener" href="https://chromewebstore.google.com/detail/shadow-shift/eigmngocbafaednlhiejofjadcndnhdd"><img alt="Chrome Web Store" src="https://img.shields.io/badge/Edge-black?style=for-the-badge&logo=microsoftedge&logoColor=cyan&color=blue"></a>
+
+</p>  
+
 Welcome to the Shadow Shift Chrome Extension repository! 
 
 This extension allows you to **<i>easily switch any webpage/PDF documents to a dark theme</i>** with just a click, providing a more comfortable browsing experience, especially in low-light environments.
